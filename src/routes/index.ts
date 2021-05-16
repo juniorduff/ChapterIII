@@ -1,14 +1,14 @@
 import { Router } from "express";
 
-import { authenticateRoutes } from "./authenticate.routes";
-import { categoriesRoutes } from "./categories.routes";
-import { specificationRoutes } from "./specification.routes";
-import { usersRoutes } from "./users.routes";
+import { authenticateRouting } from "./authenticate.routing";
+import { categoriesRouting } from "./categories.routing";
+import { specificationRouting } from "./specification.routing";
+import { usersRouting } from "./users.routing";
 
 const router = Router();
-router.use("/categories", categoriesRoutes);
-router.use("/specifications", specificationRoutes);
-router.use("/users", usersRoutes);
-router.use(authenticateRoutes);
+router.use("/categories", categoriesRouting);
+router.use("/specifications", specificationRouting);
+router.use("/users", usersRouting);
+router.use(authenticateRouting);
 
 export { router };
