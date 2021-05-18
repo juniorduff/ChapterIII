@@ -22,11 +22,11 @@ interface IResponse {
 class AuthenticateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: UsersRepository
+    private repository: UsersRepository
   ) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
-    const user = await this.usersRepository.findByEmail(email);
+    const user = await this.repository.findByEmail(email);
     const passwordMatch = await compare(password, user.password);
     if (!user) {
       throw new AppError("Email or password incorrect");
