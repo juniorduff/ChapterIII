@@ -24,9 +24,10 @@ describe("Authenticate user", () => {
       name: "user test",
     };
     await createUserUseCase.execute(user);
-    await authenticateUserUseCase.execute({
+    const result = await authenticateUserUseCase.execute({
       email: user.email,
       password: user.password,
     });
+    expect(result).toHaveProperty("token");
   });
 });

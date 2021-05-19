@@ -4,6 +4,7 @@ import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../errors/AppError";
 import { UsersRepository } from "../repositories/implemetations/UsersRepository";
+import { IUsersRepository } from "../repositories/IUsersRepository";
 
 interface IRequest {
   email: string;
@@ -22,7 +23,7 @@ interface IResponse {
 class AuthenticateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private repository: UsersRepository
+    private repository: IUsersRepository
   ) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
