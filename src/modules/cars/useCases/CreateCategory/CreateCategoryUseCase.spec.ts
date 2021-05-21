@@ -1,6 +1,6 @@
-import { AppError } from "../../../../errors/AppError";
-import { CategoryRepositoryInMemory } from "../../repositories/in-memory/CategoryRepositoryInMemory";
-import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
+import { CategoryRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoryRepositoryInMemory";
+import { CreateCategoryUseCase } from "@modules/cars/useCases/CreateCategory/CreateCategoryUseCase";
+import { AppError } from "@shared/errors/AppError";
 
 let createCategoryUseCase: CreateCategoryUseCase;
 let categoriesRepositoryInMemory: CategoryRepositoryInMemory;
@@ -29,7 +29,7 @@ describe("Create Category", () => {
   });
 
   it("should not be able to create a new category with same name ", async () => {
-    expect(async () => {
+    await expect(async () => {
       const category = {
         name: "category test",
         description: "category test",
