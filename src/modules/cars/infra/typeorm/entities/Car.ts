@@ -2,10 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
-import { JoinColumn } from "typeorm/browser";
 import { v4 as uuidv4 } from "uuid";
 
 import { Category } from "@modules/cars/infra/typeorm/entities/Category";
@@ -35,6 +35,7 @@ class Car {
   @JoinColumn({ name: "category_id" })
   category: Category;
 
+  @Column()
   category_id: string;
 
   constructor() {
